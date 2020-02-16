@@ -12,9 +12,18 @@ class BaseModel:
     class BaseModel: attributes/methods
     """
     """ Public instance attributes """
-    id = str(uuid.uuid4())
-    created_at = datetime.now()
-    updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        """ """
+        if len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == 'created_at' or key == 'updated_at':
+                    setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                elif key != '__class__':
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
     # created_at = datetime.strptime(created_at, "%Y-%m-%dT%H:%M:%S.%f")
     # updated_at = datetime.strptime(updated_at, "%Y-%m-%dT%H:%M:%S.%f")
 
@@ -30,4 +39,9 @@ class BaseModel:
         self.updated_at = datetime.now().isoformat()
 
     def to_dict(self):
-        return self.__dict__
+        """"function comment"""
+        dict1 = self.__dict__
+        dict1["__class__"] = self.__class__.__name__
+        dict1["created_at"] = dict1["created_at"].isoformat()
+        dict1["updated_at"] = dict1["updated_at"].isoformat()
+        return dict1
