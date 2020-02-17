@@ -5,7 +5,7 @@ Base Models
 """
 from datetime import datetime
 import uuid
-
+import models
 
 class BaseModel:
     """
@@ -24,6 +24,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            file_storage.new(self)
     # created_at = datetime.strptime(created_at, "%Y-%m-%dT%H:%M:%S.%f")
     # updated_at = datetime.strptime(updated_at, "%Y-%m-%dT%H:%M:%S.%f")
 
@@ -37,10 +38,11 @@ class BaseModel:
         """ updates the public instance attribute updated_at
         with the current datetime """
         self.updated_at = datetime.now().isoformat()
+        models.storage.save()
 
     def to_dict(self):
         """"function comment"""
-        dict1 = self.__dict__
+        dict1 = self.__dict__.copy()
         dict1["__class__"] = self.__class__.__name__
         dict1["created_at"] = dict1["created_at"].isoformat()
         dict1["updated_at"] = dict1["updated_at"].isoformat()
