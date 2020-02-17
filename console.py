@@ -2,7 +2,6 @@
 # description of the function
 import cmd
 from models.base_model import BaseModel
-# from models import storage
 import models
 
 class HBNBCommand(cmd.Cmd):
@@ -34,6 +33,22 @@ class HBNBCommand(cmd.Cmd):
             new_model = self.__class_name[line]()
             new_model.save()
             print(new_model.id)
+
+    def do_show(self, line):
+        """ Prints the string representation of an instance based on the class name and id """
+        if line is None or line == "":
+            print("** class name missing **")
+        elif line.split(' ')[0] not in self.__class_name:
+            print("** class doesn't exist **")
+        elif len(line.split(' ')) < 2:
+            print("** instance id missing **")
+        else:
+            key = "{}.{}".format(line.split(' ')[0], line.split(' ')[1])
+            objects = models.storage.all()
+            if key not in objects:
+                print("** no instance found **")
+            else:
+                print(objects[key])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
