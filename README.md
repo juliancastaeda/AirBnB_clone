@@ -14,7 +14,7 @@
 
   The console will be a tool to validate this storage engine
 
-  [ Foto console ]
+  ![console-hbnb][]
 
 ### Files and Directories
 - `models` directory will contain all classes used for the entire project. A class, called “model” in a OOP project is the representation of an object/instance.
@@ -52,3 +52,4 @@
 [@juliancastaeda]: https://github.com/juliancastaeda
 [@calypsobronte]: https://github.com/calypsobronte
 [MIT]: https://github.com/calypsobronte/AirBnB_clone/blob/master/LICENSE
+[console-hbnb]: https://live.staticflickr.com/65535/49545345338_54016389e9_c.jpg
