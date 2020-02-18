@@ -2,9 +2,8 @@
 """
 """
 import json
-import models
-import models.base_model
 import os
+
 
 class FileStorage():
     """comment function"""
@@ -13,26 +12,27 @@ class FileStorage():
 
     def all(self):
         """function comment"""
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """function comment"""
-        keys = (obj.__class__.__name__,obj.id)
-        FileStorage.__objects[keys] = obj
+        self.__objects["{}.{}".format(str(type(obj).__name__),
+                       str(obj.id))] = obj
 
     def save(self):
         """function comment"""
-        with open(FileStorage.__file_path, 'w') as file:
-            dict2 = {k: value.to_dict() for (key, value) in FileStorage.__objects.items()}
-            file.write(json.dump(dict, file)
-            
+        with open(self.__file_path, "w", encoding="utf-8") as file:
+            dict = {key: value.to_dict()
+                    for key, value in self.__objects.items()}
+            json.dump(dict, file)
+
     def reload(self):
         """ deserialize all the objects """
+        from models.base_model import BaseModel
         try:
-            from models.base_model import BaseModel
-            with open(FileStorage.__file_path, "r") as file:
+            with open(self.__file_path, "r") as file:
                 obj = json.load(file)
-                for v in obj.values():
-                    self.new(eval(v["__class__"])(**v))
-        except IOError:
+            for key, value in obj.values():
+                self.__objects[key] = BaseModel(**value)
+        except:
             pass
