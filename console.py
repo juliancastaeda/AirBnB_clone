@@ -116,21 +116,6 @@ class HBNBCommand(cmd.Cmd):
                 setattr(models.storage.all()[key], line_1, value)
                 models.storage.save()
 
-    def do_all(self, line):
-        """ Prints all string representation of all
-        instances based or not on the class name """
-        objects = models.storage.all()
-        if line != "":
-            if line not in self.__class_name:
-                print("** class doesn't exist **")
-            else:
-                data_json = [str(value) for key, value in objects.items()
-                             if key.split(".")[0] == line]
-                print(data_json)
-        else:
-            data_json = [str(value) for value in objects.values()]
-            print(data_json)
-
     def do_count(self, line):
         """Count command counts the instances of a class"""
         count = 0
