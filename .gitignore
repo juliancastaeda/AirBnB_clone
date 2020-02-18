@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignore Emacs
+*~
+**/*~
+**/\#*
+.vscode
+.DS_Store
+__pycache__
