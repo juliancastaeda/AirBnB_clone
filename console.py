@@ -14,7 +14,6 @@ class HBNBCommand(cmd.Cmd):
     intro = 'Welcome to the hbnb shell.   Type help or ? to list commands.\n'
     prompt = '(hbnb) '
     __class_name = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity, "State": State, "City": City}
-    
 
     # ----- basic hbnb commands -----
     def do_EOF(self, line):

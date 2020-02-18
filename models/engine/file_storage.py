@@ -42,6 +42,5 @@ class FileStorage():
                 self.__objects[key] = State(**value)
                 self.__objects[key] = City(**value)
                 self.__objects[key] = Amenity(**value)
-                
         except:
             pass
