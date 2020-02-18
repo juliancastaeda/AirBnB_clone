@@ -3,12 +3,20 @@
 """
 import json
 import os
+import models
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
 
 
 class FileStorage():
     """comment function"""
     __file_path = 'data.json'
     __objects = {}
+    __class_name = {"BaseModel": BaseModel, "User": User,
+                    "State": State, "City": City, "Amenity": Amenity}
 
     def all(self):
         """function comment"""
@@ -29,14 +37,11 @@ class FileStorage():
     def reload(self):
         """ deserialize all the objects """
         try:
-            from models.base_model import BaseModel
-            from models.user import User
-            from models.state import State
-            from models.city import City
-            from models.amenity import Amenity
-            with open(FileStorage.__file_path, "r") as file:
-                obj = json.load(file)
-            for value in obj.values():
-                self.new(eval(value["__class__"])(**value))
-        except:
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
+                dicts = json.load(file)
+            for key, value in dicts.items():
+                line = key.split(".")[0]
+                if line in FileStorage.__class_name:
+                    self.__objects[key] = self.__class_name[line](**value)
+        except FileNotFoundError:
             pass
