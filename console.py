@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = "{}.{}".format(line.split(' ')[0], line.split(' ')[1])
             objects = models.storage.all()
-            if k not in objects:
+            if key not in objects:
                 print("** no instance found **")
             else:
                 del objects[key]
