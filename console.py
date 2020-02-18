@@ -26,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, line):
         """ Quit command to exit the program """
-        print('Thank you for using hbnb')
+        # print('Thank you for using hbnb')
         return True
 
     def emptyline(self):
