@@ -16,14 +16,14 @@ class FileStorage():
 
     def new(self, obj):
         """function comment"""
-        FileStorage.__objects["{}.{}".format(str(type(obj).__class__.__name__),
-                       str(obj.id))] = obj
+        FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
+                                             obj.id)] = obj
 
     def save(self):
         """function comment"""
         with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
             dict = {key: value.to_dict()
-                    for key, value in self.__objects.items()}
+                    for key, value in FileStorage.__objects.items()}
             json.dump(dict, file)
 
     def reload(self):

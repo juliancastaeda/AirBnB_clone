@@ -140,12 +140,12 @@ class HBNBCommand(cmd.Cmd):
                     print("** class doesn't exist **")
                 return
             self.do_all(line)
-            elif line[1][0:5] == "show(" and line[1][-1:] == ")":
+            if line[1][0:5] == "show(" and line[1][-1:] == ")":
                 self.do_show(line[0] + " " + line[1][5:-1])
-            elif lines[1] == "count()":
-                self.do_count(lines[0])
-            elif lines[1][0:8] == "destroy(" and lines[1][-1:] == ")":
-                self.do_destroy(lines[0] + " " + lines[1][8:-1])
+            if line[1] == "count()":
+                self.do_count(line[0])
+            if line[1][0:8] == "destroy(" and line[1][-1:] == ")":
+                self.do_destroy(line[0] + " " + line[1][8:-1])
         else:
             super().default(line)
 
