@@ -20,6 +20,10 @@ class HBNBCommand(cmd.Cmd):
                     "City": City}
 
     # ----- basic hbnb commands -----
+    def emptyline(self):
+        """ an empty line + ENTER """
+        pass
+
     def do_EOF(self, line):
         """ Exit command to exit the program """
         return True
@@ -28,10 +32,6 @@ class HBNBCommand(cmd.Cmd):
         """ Quit command to exit the program """
         # print('Thank you for using hbnb')
         return True
-
-    def emptyline(self):
-        """ an empty line + ENTER """
-        pass
 
     def do_create(self, line):
         """ Creates a new instance of BaseModel """
