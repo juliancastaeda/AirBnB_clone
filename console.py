@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = "{}.{}".format(line.split(' ')[0], line.split(' ')[1])
             objects = models.storage.all()
-            if k not in objects:
+            if key not in objects:
                 print("** no instance found **")
             else:
                 del objects[key]
@@ -86,19 +86,16 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """ Prints all string representation of all
         instances based or not on the class name """
-        line_arg = line.split()
-        objects = models.storage.all().values()
 
-        if (len(line_arg) == 0):
-            print([str(x) for x in objects])
+        if (len(line.split()) == 0):
+            print([str(value) for value in models.storage.all().values()])
             return
 
-        if (line_arg[0] not in self.__class_name):
+        if (line.split()[0] not in self.__class_name):
             print("** class doesn't exist **")
             return
 
-        print([str(value) for v in objects
-               if value.to_dict()["__class__"] == line_arg[0]])
+        print([str(value) for key, value in models.storage.all().items() if key.split(".")[0] == line])
 
     def do_update(self, line):
         """  Updates an instance based on the class name
