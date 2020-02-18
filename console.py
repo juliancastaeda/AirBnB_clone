@@ -95,7 +95,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        print([str(value) for key, value in models.storage.all().items() if key.split(".")[0] == line])
+        print([str(value) for key, value in models.storage.all().items()
+              if key.split(".")[0] == line])
 
     def do_update(self, line):
         """  Updates an instance based on the class name
