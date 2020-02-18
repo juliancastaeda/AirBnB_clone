@@ -29,10 +29,19 @@ class FileStorage():
     def reload(self):
         """ deserialize all the objects """
         from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
         try:
             with open(self.__file_path, "r") as file:
                 obj = json.load(file)
             for key, value in obj.values():
                 self.__objects[key] = BaseModel(**value)
+                self.__objects[key] = User(**value)
+                self.__objects[key] = State(**value)
+                self.__objects[key] = City(**value)
+                self.__objects[key] = Amenity(**value)
+                
         except:
             pass

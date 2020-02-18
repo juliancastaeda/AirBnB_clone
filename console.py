@@ -4,12 +4,17 @@ import cmd
 import models
 import re
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
 
 
 class HBNBCommand(cmd.Cmd):
     intro = 'Welcome to the hbnb shell.   Type help or ? to list commands.\n'
     prompt = '(hbnb) '
-    __class_name = {"BaseModel": BaseModel}
+    __class_name = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity, "State": State, "City": City}
+    
 
     # ----- basic hbnb commands -----
     def do_EOF(self, line):
