@@ -9,5 +9,5 @@ class User(BaseModel):
     """function comment"""
     email = ''
     password = ''
-    first_name =''
+    first_name = ''
     last_name = ''
