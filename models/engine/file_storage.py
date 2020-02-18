@@ -31,7 +31,7 @@ class FileStorage():
 
     def new(self, obj):
         """function comment"""
-        FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
+        FileStorage.__objects["{}.{}".format(type(obj).__name__,
                                              obj.id)] = obj
 
     def save(self):
@@ -45,7 +45,7 @@ class FileStorage():
         """ deserialize all the objects """
         try:
             with open(FileStorage.__file_path, "r", encoding='utf-8') as file:
-                dicts = json.load(file)
+                dicts = json.loads(file.read())
             for key, value in dicts.items():
                 line = key.split(".")[0]
                 if line in FileStorage.__class_name:
