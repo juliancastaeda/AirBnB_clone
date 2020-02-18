@@ -16,7 +16,7 @@ class FileStorage():
 
     def new(self, obj):
         """function comment"""
-        FileStorage.__objects["{}.{}".format(str(type(obj).__name__),
+        FileStorage.__objects["{}.{}".format(str(type(obj).__class__.__name__),
                        str(obj.id))] = obj
 
     def save(self):
