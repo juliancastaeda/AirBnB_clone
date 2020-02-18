@@ -16,8 +16,13 @@ class FileStorage():
     """comment function"""
     __file_path = 'data.json'
     __objects = {}
-    __class_name = {"BaseModel": BaseModel, "User": User,
-                    "State": State, "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+    __class_name = {"BaseModel": BaseModel,
+                    "User": User,
+                    "State": State,
+                    "City": City,
+                    "Amenity": Amenity,
+                    "Place": Place,
+                    "Review": Review}
 
     def all(self):
         """function comment"""
@@ -38,7 +43,7 @@ class FileStorage():
     def reload(self):
         """ deserialize all the objects """
         try:
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
+            with open(FileStorage.__file_path, "r", encoding='utf-8') as file:
                 dicts = json.load(file)
             for key, value in dicts.items():
                 line = key.split(".")[0]
