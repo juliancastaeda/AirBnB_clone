@@ -137,9 +137,8 @@ class HBNBCommand(cmd.Cmd):
             line = line.split('.')[0]
             if (line.split(".")[1].split("(")[0] == "all"):
                 if (line not in self.__class_name):
-                print("** class doesn't exist **")
+                    print("** class doesn't exist **")
                 return
-
             self.do_all(line)
             elif line[1][0:5] == "show(" and line[1][-1:] == ")":
                 self.do_show(line[0] + " " + line[1][5:-1])
