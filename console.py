@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         """ Deletes an instance based on the class name and id """
         if line is None or line == "":
             print("** class name missing **")
-        elif line.split(' ')[0] not in HBNBCommand.__classes:
+        elif line.split(' ')[0] not in self.__class_name:
             print("** class doesn't exist **")
         elif len(line.split(' ')) < 2:
             print("** instance id missing **")
@@ -82,19 +82,19 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """ Prints all string representation of all
         instances based or not on the class name """
-        objects = models.storage.all()
-        data_json = []
-        if line == '':
-            for value in objects.values():
-                data_json.append(str(value))
-            print(data_json)
-        elif line in self.__class_name:
-            for value in objects.values():
-                if value.__class__.__name__ == line:
-                    data_json.append(str(value))
-            print(data_json)
-        else:
+        line_arg = line.split()
+        objects = models.storage.all().values()
+
+        if (len(line_arg) == 0):
+            print([str(x) for x in objects])
+            return
+
+        if (line_arg[0] not in self.__class_name):
             print("** class doesn't exist **")
+            return
+
+        print([str(value) for v in objects
+               if value.to_dict()["__class__"] == line_arg[0]])
 
     def do_update(self, line):
         """  Updates an instance based on the class name
@@ -135,8 +135,12 @@ class HBNBCommand(cmd.Cmd):
             return
         if line and len(line.split()) > 1:
             line = line.split('.')[0]
-            if lines[1] == "all()":
-                self.do_all(lines[0])
+            if (line.split(".")[1].split("(")[0] == "all"):
+                if (line not in self.__class_name):
+                print("** class doesn't exist **")
+                return
+
+            self.do_all(line)
             elif line[1][0:5] == "show(" and line[1][-1:] == ")":
                 self.do_show(line[0] + " " + line[1][5:-1])
             elif lines[1] == "count()":
