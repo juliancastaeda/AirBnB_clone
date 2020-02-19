@@ -148,6 +148,8 @@ class HBNBCommand(cmd.Cmd):
                 return
 
             self.do_count(line.split(".")[0])
+        else:
+            super().default(line)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
