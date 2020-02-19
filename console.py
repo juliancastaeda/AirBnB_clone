@@ -137,12 +137,17 @@ class HBNBCommand(cmd.Cmd):
             return
 
         if (line.split(".")[1].split("(")[0] == "all"):
-            if (line not in self.__class_name):
-                print("** entra class doesn't exist **")
+            if (line.split(".")[0] not in self.__class_name):
+                print("** class doesn't exist **")
                 return
-            self.do_all(line)
-        else:
-            super().default(line)
+
+            self.do_all(line.split(".")[0])
+        elif (line.split(".")[1].split("(")[0] == "count"):
+            if (line.split(".")[0] not in self.__class_name):
+                print("** class doesn't exist **")
+                return
+
+            self.do_count(line.split(".")[0])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
