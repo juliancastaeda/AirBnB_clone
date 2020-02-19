@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """Test Base Model"""
 import unittest
-import pep8
+from datetime import datetime
+import uuid
+import os
 from models.base_model import BaseModel
+import pep8
 from models.city import City
 from models.place import Place
 from models.amenity import Amenity
