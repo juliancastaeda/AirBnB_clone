@@ -1,14 +1,17 @@
 #!/usr/bin/python3
-"""Test File Storage"""
+"""test for file storage"""
 import unittest
 import pep8
 import json
-import uuid
-from datetime import datetime
 import os
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.engine.file_storage import FileStorage
 
 
 class TestFileStorage(unittest.TestCase):
@@ -35,7 +38,7 @@ class TestFileStorage(unittest.TestCase):
     def tearDown(self):
         """teardown"""
         try:
-            os.remove("file.json")
+            os.remove("data.json")
         except Exception:
             pass
 
@@ -110,6 +113,26 @@ class TestFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
+
+    def test_file_path(self):
+        """
+        Test to see if the file_self.path exist
+        """
+        try:
+            self.assertEqual(FileStorage._FileStorage__file_path, self.path)
+        except AttributeError:
+            pass
+
+    def test_objects_exist_storage(self):
+        """
+        Test if __objects exist and was created
+        """
+        dic = self.storage.all()
+        try:
+            self.assertEqual(FileStorage._FileStorage__objects, dic)
+            self.assertTrue(FileStorage._FileStorage__objects)
+        except AttributeError:
+            pass
 
     def test_save(self):
         """
