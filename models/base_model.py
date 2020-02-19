@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# description of the function
+# description of the function :)
 """
 Base Models
 """
