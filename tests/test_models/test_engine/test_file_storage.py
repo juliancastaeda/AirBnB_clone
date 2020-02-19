@@ -4,6 +4,8 @@ import unittest
 import pep8
 import json
 import os
+import uuid
+from datetime import datetime
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -12,7 +14,6 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models.engine.file_storage import FileStorage
-
 
 
 class TestFileStorage(unittest.TestCase):
@@ -26,20 +27,20 @@ class TestFileStorage(unittest.TestCase):
         cls.user.last_name = "Yo"
         cls.user.email = "1234@yahoo.com"
         cls.storage = FileStorage()
-        cls.path = "data.json"
+        cls.path = "file.json"
 
     @classmethod
     def teardown(cls):
         """at the end of the test this will tear it down"""
         del cls.user
         """ if delete the file """
-        if os.path.exists("data.json"):
-            os.remove("data.json")
+        if os.path.exists("file.json"):
+            os.remove("file.json")
 
     def tearDown(self):
         """teardown"""
         try:
-            os.remove("data.json")
+            os.remove("file.json")
         except Exception:
             pass
 
@@ -48,7 +49,7 @@ class TestFileStorage(unittest.TestCase):
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/engine/file_storage.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
-    
+
     def test_docstring(self):
         """
         Test docstring
@@ -93,7 +94,7 @@ class TestFileStorage(unittest.TestCase):
         """
         self.storage.save()
         Root = os.path.dirname(os.path.abspath("console.py"))
-        path = os.path.join(Root, "data.json")
+        path = os.path.join(Root, "file.json")
         with open(path, 'r') as f:
             lines = f.readlines()
         try:
