@@ -27,20 +27,20 @@ class TestFileStorage(unittest.TestCase):
         cls.user.last_name = "Yo"
         cls.user.email = "1234@yahoo.com"
         cls.storage = FileStorage()
-        cls.path = "file.json"
+        cls.path = "data.json"
 
     @classmethod
     def teardown(cls):
         """at the end of the test this will tear it down"""
         del cls.user
         """ if delete the file """
-        if os.path.exists("file.json"):
-            os.remove("file.json")
+        if os.path.exists("data.json"):
+            os.remove("data.json")
 
     def tearDown(self):
         """teardown"""
         try:
-            os.remove("file.json")
+            os.remove("data.json")
         except Exception:
             pass
 
@@ -94,7 +94,7 @@ class TestFileStorage(unittest.TestCase):
         """
         self.storage.save()
         Root = os.path.dirname(os.path.abspath("console.py"))
-        path = os.path.join(Root, "file.json")
+        path = os.path.join(Root, "data.json")
         with open(path, 'r') as f:
             lines = f.readlines()
         try:

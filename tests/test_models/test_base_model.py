@@ -2,6 +2,8 @@
 """Test Base Model"""
 import unittest
 import pep8
+import uuid
+from datetime import datetime
 from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
