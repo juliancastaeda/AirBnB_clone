@@ -1,14 +1,19 @@
 #!/usr/bin/python3
-"""Test File Storage"""
+"""test for file storage"""
 import unittest
 import pep8
 import json
+import os
 import uuid
 from datetime import datetime
-import os
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.engine.file_storage import FileStorage
 
 
 class TestFileStorage(unittest.TestCase):
@@ -35,7 +40,7 @@ class TestFileStorage(unittest.TestCase):
     def tearDown(self):
         """teardown"""
         try:
-            os.remove("file.json")
+            os.remove("data.json")
         except Exception:
             pass
 
@@ -94,7 +99,7 @@ class TestFileStorage(unittest.TestCase):
             lines = f.readlines()
         try:
             os.remove(path)
-        except Exception:
+        except:
             pass
         self.storage.save()
         with open(path, 'r') as f:
@@ -102,7 +107,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(lines, lines2)
         try:
             os.remove(path)
-        except Exception:
+        except:
             pass
         with open(path, "w") as f:
             f.write("{}")
@@ -110,24 +115,3 @@ class TestFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
-
-    def test_save(self):
-        """
-        Testing the save method
-        """
-        bm = BaseModel()
-        bm.save()
-        self.assertTrue(os.path.exists(self.path))
-        bm.name = "Testing"
-        bm.number = 1
-        bm.save()
-        self.assertTrue(os.path.exists(self.path))
-        dic = {}
-        with open('data.json', 'r') as fjson:
-            dic = json.loads(fjson.read())
-        bm_key = bm.__class__.__name__ + '.' + bm.id
-        self.assertDictEqual(bm.to_dict(), dic[bm_key])
-
-
-if __name__ == "__main__":
-    unittest.main()
