@@ -26,7 +26,7 @@ class TestBaseModel(unittest.TestCase):
     def tearDown(self):
         """teardown"""
         try:
-            os.remove("file.json")
+            os.remove("data.json")
         except Exception:
             pass
 
