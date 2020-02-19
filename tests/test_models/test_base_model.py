@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """test for the BaseModel class"""
+
+
 import unittest
 import os
 from models.base_model import BaseModel
@@ -24,7 +26,7 @@ class TestBaseModel(unittest.TestCase):
     def tearDown(self):
         """teardown"""
         try:
-            os.remove("data.json")
+            os.remove("file.json")
         except Exception:
             pass
 
