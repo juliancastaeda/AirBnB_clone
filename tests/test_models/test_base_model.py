@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Test Base Model"""
+from datetime import datetime
+import uuid
 import unittest
 import pep8
 from models.base_model import BaseModel
