@@ -135,19 +135,12 @@ class HBNBCommand(cmd.Cmd):
                      line) is None):
             super().default(line)
             return
-        if line and len(line.split()) > 1:
-            line = line.split('.')[0]
-            if (line.split(".")[1].split("(")[0] == "all"):
-                if (line not in self.__class_name):
-                    print("** class doesn't exist **")
+
+        if (line.split(".")[1].split("(")[0] == "all"):
+            if (line not in self.__class_name):
+                print("** entra class doesn't exist **")
                 return
             self.do_all(line)
-            if line[1][0:5] == "show(" and line[1][-1:] == ")":
-                self.do_show(line[0] + " " + line[1][5:-1])
-            if line[1] == "count()":
-                self.do_count(line[0])
-            if line[1][0:8] == "destroy(" and line[1][-1:] == ")":
-                self.do_destroy(line[0] + " " + line[1][8:-1])
         else:
             super().default(line)
 
