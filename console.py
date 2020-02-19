@@ -139,8 +139,9 @@ class HBNBCommand(cmd.Cmd):
             if (line.split(".")[0] not in self.__class_name):
                 print("** class doesn't exist **")
                 return
+
             self.do_all(line.split(".")[0])
-        if (line.split(".")[1].split("(")[0] == "count"):
+        elif (line.split(".")[1].split("(")[0] == "count"):
             if (line.split(".")[0] not in self.__class_name):
                 print("** class doesn't exist **")
                 return
