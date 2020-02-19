@@ -1,17 +1,15 @@
 #!/usr/bin/python3
 """Test Base Model"""
 import unittest
+import pep8
 from datetime import datetime
 import uuid
-import os
 from models.base_model import BaseModel
-import pep8
 from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.state import State
 from models.review import Review
-
 
 class Testpep8(unittest.TestCase):
 
@@ -20,8 +18,7 @@ class Testpep8(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/base_model.py'])
         self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
-
+                      "Found code style errors (and warnings).")
 
 class Testbasemodel(unittest.TestCase):
 
@@ -30,8 +27,8 @@ class Testbasemodel(unittest.TestCase):
             by passing a dictionary, it works correctly """
         date = datetime.now()
         dic = {"id": "7734cf23-6c89-4662-8483-284727324c77", "created_at":
-               "2020-02-17T16:32:39.023915", "updated_at":
-               "2020-02-17T16:32:39.023940", "__class__": "BaseModel"}
+            "2020-02-17T16:32:39.023915", "updated_at":
+            "2020-02-17T16:32:39.023940", "__class__": "BaseModel"}
         my_base = BaseModel(**dic)
         self.assertEqual(my_base.__class__.__name__, "BaseModel")
         self.assertEqual(my_base.id, "7734cf23-6c89-4662-8483-284727324c77")
@@ -43,9 +40,9 @@ class Testbasemodel(unittest.TestCase):
             extra attributes, these are added correctly """
         date = datetime.now()
         dic = {"id": "7734cf23-6c89-4662-8483-284727324c77", "created_at":
-               "2020-02-17T16:32:39.023915", "updated_at":
-               "2020-02-17T16:32:39.023940", "__class__": "BaseModel",
-               "name": "Andrea", "last_name": "Méndez"}
+            "2020-02-17T16:32:39.023915", "updated_at":
+            "2020-02-17T16:32:39.023940", "__class__": "BaseModel",
+            "name": "Andrea", "last_name": "Méndez"}
         my_base = BaseModel(**dic)
         self.assertEqual(my_base.__class__.__name__, "BaseModel")
         self.assertEqual(my_base.id, "7734cf23-6c89-4662-8483-284727324c77")
@@ -60,9 +57,9 @@ class Testbasemodel(unittest.TestCase):
             and their types correspond """
         date = datetime.now()
         dic = {"id": "7734cf23-6c89-4662-8483-284727324c77", "created_at":
-               "2020-02-17T16:32:39.023915", "updated_at":
-               "2020-02-17T16:32:39.023940", "__class__": "BaseModel", "name":
-               "Andrea", "last_name": "Méndez", "age": 20, "height": 1.68}
+            "2020-02-17T16:32:39.023915", "updated_at":
+            "2020-02-17T16:32:39.023940", "__class__": "BaseModel", "name":
+            "Andrea", "last_name": "Méndez", "age": 20, "height": 1.68}
         my_base = BaseModel(**dic)
         self.assertEqual(my_base.__class__.__name__, "BaseModel")
         self.assertEqual(my_base.id, "7734cf23-6c89-4662-8483-284727324c77")
@@ -81,9 +78,9 @@ class Testbasemodel(unittest.TestCase):
             these are added correctly """
         date = datetime.now()
         dic = {"id": "7734cf23-6c89-4662-8483-284727324c77", "created_at":
-               "2020-02-17T16:32:39.023915", "updated_at":
-               "2020-02-17T16:32:39.023940", "__class__": "BaseModel", "name":
-               "Andrea", "last_name": "Méndez Mesias"}
+            "2020-02-17T16:32:39.023915", "updated_at":
+            "2020-02-17T16:32:39.023940", "__class__": "BaseModel", "name":
+            "Andrea", "last_name": "Méndez Mesias"}
         my_base = BaseModel(**dic)
         self.assertEqual(my_base.__class__.__name__, "BaseModel")
         self.assertEqual(my_base.id, "7734cf23-6c89-4662-8483-284727324c77")
