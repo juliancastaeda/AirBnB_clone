@@ -150,7 +150,6 @@ class HBNBCommand(cmd.Cmd):
                 self.do_destroy(line[0] + " " + line[1][8:-1])
         else:
             super().default(line)
-            """ hola """
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
