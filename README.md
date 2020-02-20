@@ -26,14 +26,38 @@
 - `models/engine` directory will contain all storage classes (using the same prototype). For the moment you will have only one: `file_storage.py`.
 
 ## Repositor of test
-[In construction]
+[Test for Airbnb Console](https://github.com/calypsobronte/AirBnB_clone/tree/master/tests)
 
 ## Requirements
 - All your files will be interpreted/compiled on `Ubuntu 14.04 LTS` using `python3` (version 3.4.3)
 - The first line of all your files should be exactly `#!/usr/bin/python3`
 
+## How the project works
+
+Let's clone the repository with the following command:
 ```bash
 $ git clone https://github.com/calypsobronte/AirBnB_clone.git
+```
+
+After cloning, we access the `AirBnB_clone`
+```bash
+$ cd AirBnB_clone
+```
+Once inside the folder, run the console in the following way `./console.py`
+```bash
+$ ./console.py
+```
+Running the console will show us something like this.
+```bash
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
+
+(hbnb) all
+[]
+(hbnb)    
 ```
 
 ## Authors and Contributors
