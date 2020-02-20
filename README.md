@@ -32,6 +32,9 @@
 - All your files will be interpreted/compiled on `Ubuntu 14.04 LTS` using `python3` (version 3.4.3)
 - The first line of all your files should be exactly `#!/usr/bin/python3`
 
+```bash
+$ git clone https://github.com/calypsobronte/AirBnB_clone.git
+```
 
 ## Authors and Contributors
 - Julian Castañeda
