@@ -1,0 +1,12 @@
+header
+    {
+        display: flex;
+	height: 70px;
+	width: 100%;
+	border-bottom:1px solid #CCCCCC;
+	background-color:#FFFFFF;
+	background: url("../images/logo.png") no-repeat;
+	algin-items:center;
+	position:absolute;
+	
+    }
