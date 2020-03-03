@@ -1,0 +1,120 @@
+.places{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.places article{
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+}
+
+.places h1{
+    width: 100%;
+    text-align: left;
+    font-size: 30px;
+}
+
+.places h2{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.price_by_night {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px #FF5A5F solid;
+    min-width: 60px;
+    font-size: 30px;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: -90px;
+    margin-left: 280px;
+    color: #FF5A5F;
+}
+
+.information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    border-top: 1px #DDDDDD;
+    border-bottom: 1px #DDDDDD;
+    border-left: 0px #DDDDDD;
+    border-right: 0px #DDDDDD;
+    border-style: solid;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.bathroom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/icon_bath.png") no-repeat;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+.bedroom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/icon_bed.png") no-repeat;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+.features{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/icon_group.png") no-repeat;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.max_guest{
+    margin-bottom: 5px;
+    margin-top: 75px;
+    margin-left: 5px;
+    width: 100px;
+}
+
+.number_rooms {
+    width: 100px;
+    margin-bottom: 5px;
+    margin-top: 75px;
+    margin-left: 5px;
+}
+
+.number_bathrooms {
+    width: 100px;
+    margin-bottom: 5px;
+    margin-top: 75px;
+    margin-left: 5px;
+}
+
+.information p {
+    width: 90px;
+}
