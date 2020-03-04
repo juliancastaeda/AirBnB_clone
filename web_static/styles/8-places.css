@@ -5,6 +5,14 @@
     align-items: center;
     padding: 0 20px;
 }
+.grid_box {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22.5vw, 1fr));
+    grid-gap: 0;
+    grid-auto-rows: minmax(29.5vw, 22.5vw);
+    width: 100%;
+}
+
 
 .places article{
     width: 390px;
@@ -31,15 +39,15 @@
     justify-content: center;
     align-items: center;
     border: 5px #FF5A5F solid;
-    min-width: 60px;
+    min-width: 50px;
     font-size: 30px;
     border-radius: 50%;
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     position: relative;
-    margin-bottom: 30px;
-    margin-top: -90px;
-    margin-left: 280px;
+    margin-bottom: 10px;
+    margin-top: -50px;
+    margin-left: 295px;
     color: #FF5A5F;
 }
 
@@ -79,7 +87,7 @@
     height: 50px;
     margin-bottom: 50px;
     margin-top: 30px;
-    margin-left: 80px;
+    margin-left: 40px;
 }
 
 .features{
@@ -87,7 +95,7 @@
     justify-content: center;
     align-items: center;
     background: url("../images/icon_group.png") no-repeat;
-    width: 50px;
+    width: 80px;
     height: 50px;
     margin-bottom: 50px;
     margin-top: 30px;
